@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">budgetapp</string>
+
+    <string-array name="locations">
+        <item>Select</item>
+        <item>Expense</item>
+        <item>Income</item>
+
+
+    </string-array>
+
+</resources>

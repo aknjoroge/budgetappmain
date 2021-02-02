@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/mainrela"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <androidx.cardview.widget.CardView
+                android:id="@+id/view2"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="1dp"
+
+                android:background="#ffffff"
+                android:shape="ring"
+                app:cardCornerRadius="95dp">
+
+
+            <ImageView
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:id="@+id/pprofilepics"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/person_24" />
+
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_gravity="center"
+                android:id="@+id/changedptxt"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="update profile pic?" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="250dp"
+            android:id="@+id/card1"
+            android:layout_alignParentStart="true"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="20dp"
+
+            app:cardMaxElevation="20dp">
+
+
+
+            <TextView
+android:drawablePadding="5dp"
+                android:id="@+id/mainnametxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="9dp"
+                android:drawableStart="@drawable/person_24"
+                android:text="Your Name"
+                android:textColor="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_below="@+id/card1"
+                android:layout_marginLeft="20dp"
+               android:layout_marginBottom="5dp"
+                android:id="@+id/textView2"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:fontFamily="sans-serif-medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Balance:" />
+
+            <TextView
+                android:layout_below="@+id/textView2"
+                android:layout_marginLeft="50dp"
+                android:id="@+id/mainbalancetxt"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="yourbalance" />
+
+
+
+            <TableLayout
+                android:id="@+id/maintabel"
+                android:layout_below="@id/mainbalancetxt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TableRow
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+                    <androidx.cardview.widget.CardView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="20dp"
+                        app:cardMaxElevation="20dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:layout_margin="7dp"
+                                android:textSize="16dp"
+                                android:textColor="@color/black"
+                                android:id="@+id/texjtView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Income:" />
+                            <TextView
+                                android:layout_marginLeft="5dp"
+                                android:id="@+id/mainincometext"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Your income" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="20dp"
+                        app:cardMaxElevation="20dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:layout_margin="7dp"
+                                android:textSize="16dp"
+                                android:textColor="@color/black"
+                                android:id="@+id/textView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Expenses" />
+                            <TextView
+                                android:id="@+id/mainexpensetext"
+                                android:layout_marginLeft="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Your Expense" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/blue"
+                        android:textSize="19dp"
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dashboard" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+
+                    <Button
+                        android:id="@+id/viewincomebtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@color/red"
+                        android:text="Income" />
+
+                    <Button
+                        android:id="@+id/viewexbtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@color/red"
+                        android:text="Expenses" />
+
+                    <Button
+                        android:id="@+id/viewallbtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@color/red"
+                        android:text="All" />
+                </TableRow>
+
+
+
+            </TableLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_margin="10dp"
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:text="Add:" />
+
+                <Spinner
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/setspinner"
+                    android:layout_width="260dp"
+android:layout_gravity="center"
+                    android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
+                    android:layout_height="40dp" />
+
+            </LinearLayout>
+            <LinearLayout
+               android:layout_alignParentEnd="true"
+               android:layout_below="@id/maintabel"
+                android:id="@+id/inputtextlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+                <EditText
+                    android:id="@+id/listtypename"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="4dp"
+                    android:background="@drawable/custominput"
+                    android:hint="Name"
+                    android:inputType="textPersonName"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:layout_marginLeft="4dp"
+                    android:id="@+id/listtypeamounte"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custominput"
+                    android:hint="amount"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+
+                <Button
+android:drawableTop="@drawable/add_circle_24"
+                    android:id="@+id/addtypebtn"
+                    android:padding="7dp"
+                    android:background="@android:color/transparent"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+     />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclermenucarts"
+                    android:layout_width="1dp"
+                    android:visibility="gone"
+                    android:layout_height="0dp"
+                    android:layout_alignParentStart="true"
+
+                    android:scrollbars="vertical">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/bgprog"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible" />
+
+
+        </LinearLayout>
+
+
+
+
+
+    </ScrollView>
+</LinearLayout>
