@@ -60,11 +60,11 @@ EditText signname,signpas,signemail;
                     return;
                 }
                 if(TextUtils.isEmpty(takename=signname.getText().toString())){
-                    signname.setError("Email is required");
+                    signname.setError("Name is required");
                     return;
                 }
                 if(TextUtils.isEmpty(takepass=signpas.getText().toString())){
-                    signpas.setError("Email is required");
+                    signpas.setError("Pass is required");
                     return;
                 }
 
@@ -72,59 +72,57 @@ forsign.setVisibility(View.VISIBLE);
 
 takemail=signemail.getText().toString();
 takepass=signpas.getText().toString();
-                fAuth.createUserWithEmailAndPassword(takemail,takepass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.createUserWithEmailAndPassword(takemail,takepass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                    public void onSuccess(AuthResult authResult) {
+                        FirebaseUser fuser =fAuth.getCurrentUser();
+                        fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(signup.this, "Verification Email Sent ", Toast.LENGTH_SHORT).show();
 
-                            FirebaseUser fuser =fAuth.getCurrentUser();
-                            fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Toast.makeText(signup.this, "Verification Email Sent ", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(signup.this, "Error sending verification , Contact Admin", Toast.LENGTH_SHORT).show();
+                            }
+                        });
 
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(signup.this, "Error sending verification , Contact Admin", Toast.LENGTH_SHORT).show();
-                                }
-                            });
 
-                            createbank();
-                            Toast.makeText(signup.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
-                            userid= fAuth.getCurrentUser().getUid();
-                            DocumentReference documentReference = fStore.collection("users").document(userid);
+                        Toast.makeText(signup.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
+                        userid= fAuth.getCurrentUser().getUid();
+                        DocumentReference documentReference = fStore.collection("users").document(userid);
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("name", takename);
+                        user.put("pass",takepass);
+                        user.put("mail", takemail);
 
-                            Map<String, Object> user = new HashMap<>();
-                            user.put("name", takename);
-                            user.put("pass",takepass);
-                            user.put("mail", takemail);
+                        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void avoid) {
+                                Log.d(TAG, "user profile created " + userid);
+                                createbank();
+                                forsign.setVisibility(View.INVISIBLE);
+                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
-                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void avoid) {
-                                    Log.d(TAG, "user profile created " + userid);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d(TAG ,"on failure: "+e.toString());
+                            }
+                        });
 
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.d(TAG ,"on failure: "+e.toString());
-                                }
-                            });
-                            forsign.setVisibility(View.INVISIBLE);
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        }
-                        else {
-                            Toast.makeText(signup.this, "An error occured" +task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                            forsign.setVisibility(View.INVISIBLE);
-                        }
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(signup.this, "Failed sign-up check internet", Toast.LENGTH_SHORT).show();
+                        forsign.setVisibility(View.INVISIBLE);
                     }
                 });
-
-
-
 
 
             }

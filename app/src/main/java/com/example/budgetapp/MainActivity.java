@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     String userid;
     FirebaseAuth fAuth;
     Spinner amountype;
+    double inc;
+    double exp;
     int totalpriceone =0;
     public RecyclerView recyclerView;
     String toload;
@@ -64,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     RecyclerView.LayoutManager layoutManager;
 String globexp,globinc;
     String atype;
+
+
+
     String globamount;
     String cdate,ctime;
     int examount;
@@ -164,6 +170,14 @@ globamount=amount.getText().toString();
 
 
                                 budgetCart();
+
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        autobanktxt();
+                                    }
+                                },500);
+
 
 
                             }
@@ -506,7 +520,7 @@ exencetx=findViewById(R.id.mainexpensetext);
 
             }
         });
-        autobanktxt();
+       autobanktxt();
 
     }
 
@@ -517,23 +531,30 @@ exencetx=findViewById(R.id.mainexpensetext);
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 String amounttake=documentSnapshot.getString("expense");
                 String amountake2=documentSnapshot.getString("income");
+              //  Toast.makeText(MainActivity.this, "oneis"+amountake2, Toast.LENGTH_SHORT).show();
+
+                if(amountake2==null && amounttake ==null){
+                    globexp="0";
+                    globinc="0";
+                    balancetx.setText("0");
+                    incometx.setText("0");
+                    exencetx.setText("0");
+
+                }else {
+                    inc= Integer.parseInt(amountake2);
+                    exp= Integer.parseInt(amounttake);
+
+                    globexp=amounttake;
+                    globinc=amountake2;
+                    double bl=inc-exp;
+                    String balancing =String.valueOf(bl);
+                    balancetx.setText(balancing);
+                    incometx.setText(amountake2);
+                    exencetx.setText(amounttake);
 
 
-                int inc= Integer.parseInt(amountake2);
-                int exp= Integer.parseInt(amounttake);
+                }
 
-                globexp=amounttake;
-                globinc=amountake2;
-
-              //  Toast.makeText(MainActivity.this, "globexp"+globexp, Toast.LENGTH_SHORT).show();
-                int bl=inc-exp;
-                String balancing =String.valueOf(bl);
-
-                balancetx.setText(balancing);
-                incometx.setText(amountake2);
-                exencetx.setText(amounttake);
-
-                //  Toast.makeText(MainActivity.this, amounttake, Toast.LENGTH_SHORT).show();
 
 
             }
