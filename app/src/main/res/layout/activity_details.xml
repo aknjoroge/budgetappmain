@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    tools:context=".details">
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+
+        android:layout_height="wrap_content"
+        android:text="Entry Details" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp"
+        app:cardMaxElevation="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/custominput"
+                android:id="@+id/detailname"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+
+                android:text="NAME"
+                android:textAlignment="center"
+
+                />
+
+            <TextView
+
+                android:textColor="@color/black"
+                android:id="@+id/detamount"
+                android:layout_width="250dp"
+                android:textAlignment="center"
+                android:layout_margin="5dp"
+                android:textSize="15dp"
+                android:background="@drawable/custominput"
+                android:layout_height="40dp"
+                android:text="AMOUNT"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
+                android:elevation="2dp"
+
+                app:cardBackgroundColor="@color/red"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp">
+                <Button
+                    android:id="@+id/detaildel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DELETE"
+                    android:textSize="16dp"
+                    android:textColor="@color/white"
+                    android:background="@android:color/transparent"
+                    tools:layout_editor_absoluteX="159dp"
+                    tools:layout_editor_absoluteY="623dp" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:id="@+id/dtprogm"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/datatxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Press DELETE  to Remove Entry"
+        android:textAlignment="center"
+
+        android:textSize="16dp" />
+
+
+
+
+</LinearLayout>

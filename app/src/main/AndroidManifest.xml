@@ -9,7 +9,10 @@
         android:roundIcon="@drawable/ic_budgeticon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mainlist"></activity>
+        <activity android:name=".details"></activity>
+        <activity
+            android:name=".mainlist"
+             />
         <activity android:name=".signup" />
         <activity android:name=".MainActivity" />
         <activity android:name=".login">

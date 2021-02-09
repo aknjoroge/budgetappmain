@@ -167,6 +167,9 @@ globamount=amount.getText().toString();
                         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void avoid) {
+                                name.setText("");
+                                amount.setText("");
+                                Toast.makeText(MainActivity.this, "Data added", Toast.LENGTH_SHORT).show();
 
 
                                 budgetCart();
@@ -349,6 +352,12 @@ exencetx=findViewById(R.id.mainexpensetext);
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        autobanktxt();
+    }
+
     private void checkdata() {
 
         final DocumentReference documentReference = fStore.collection("BudgetCart").document("Foruser").collection(userid).document("bank");
@@ -417,6 +426,7 @@ exencetx=findViewById(R.id.mainexpensetext);
     private void autochangeprofiles() {
 
         StorageReference profileref = storageReference.child("Userprofile/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
+
         profileref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -428,7 +438,7 @@ exencetx=findViewById(R.id.mainexpensetext);
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(MainActivity.this, "errorr "+e.toString(), Toast.LENGTH_SHORT).show();
+
             }
         });
 

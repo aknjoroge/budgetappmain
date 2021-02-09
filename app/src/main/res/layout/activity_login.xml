@@ -63,7 +63,7 @@
                 android:drawableStart="@drawable/lock_24"
                 android:drawablePadding="15dp"
                 android:hint="PASSWORD"
-                android:inputType="textPersonName"
+                android:inputType="textPassword"
                 android:paddingLeft="10dp"
                 android:textSize="12sp" />
 
