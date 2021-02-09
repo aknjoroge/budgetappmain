@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,6 +30,7 @@ public class mainlist extends AppCompatActivity {
 
 TextView menu;
     FirebaseUser using;
+    String globkey;
     String userid;
     FirebaseAuth fAuth;
     StorageReference storageReference;
@@ -70,13 +73,16 @@ menu=findViewById(R.id.menutypetxt);
                 holder.txtlname.setText("Name :"+model.getName()+".");
                 holder.txtlamount.setText("Amount: "+model.getAmount()+"/=");
                 holder.txtldate.setText(model.getDate());
-
+globkey=model.getDate();
 
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View v) {
+
+
+
                         oncartclick();
                     }
                 });
@@ -103,7 +109,21 @@ menu=findViewById(R.id.menutypetxt);
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(mainlist.this, "Conatctadmin", Toast.LENGTH_SHORT).show();
+                        fStore.collection("Budgetlist").document(toload).collection(userid).document(globkey)
+                                .delete()
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(mainlist.this, "Item Deleted", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(mainlist.this, "Error deleting document", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
 
 
                     }

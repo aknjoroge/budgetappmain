@@ -233,9 +233,9 @@ exencetx=findViewById(R.id.mainexpensetext);
             @Override
             public void onClick(View v) {
               //  linearLayout.setVisibility(View.INVISIBLE);
-                ofall.setBackgroundColor(getResources().getColor(R.color.white));
-                ofinc.setBackgroundColor(getResources().getColor(R.color.red));
-                ofex.setBackgroundColor(getResources().getColor(R.color.red));
+                ofall.setBackgroundColor(getResources().getColor(R.color.red));
+                ofinc.setBackgroundColor(getResources().getColor(R.color.white));
+                ofex.setBackgroundColor(getResources().getColor(R.color.white));
                 String towhere ="all";
                 Intent intent=new Intent(MainActivity.this,mainlist.class);
                 intent.putExtra("location",towhere);
@@ -248,9 +248,9 @@ exencetx=findViewById(R.id.mainexpensetext);
             @Override
             public void onClick(View v) {
                 linearLayout.setVisibility(View.VISIBLE);
-                ofall.setBackgroundColor(getResources().getColor(R.color.red));
-                ofinc.setBackgroundColor(getResources().getColor(R.color.white));
-                ofex.setBackgroundColor(getResources().getColor(R.color.red));
+                ofall.setBackgroundColor(getResources().getColor(R.color.white));
+                ofinc.setBackgroundColor(getResources().getColor(R.color.red));
+                ofex.setBackgroundColor(getResources().getColor(R.color.white));
                 String towhere ="income";
                 Intent intent=new Intent(MainActivity.this,mainlist.class);
                 intent.putExtra("location",towhere);
@@ -263,9 +263,9 @@ exencetx=findViewById(R.id.mainexpensetext);
             @Override
             public void onClick(View v) {
                 linearLayout.setVisibility(View.VISIBLE);
-                ofall.setBackgroundColor(getResources().getColor(R.color.red));
-                ofinc.setBackgroundColor(getResources().getColor(R.color.red));
-                ofex.setBackgroundColor(getResources().getColor(R.color.white));
+                ofall.setBackgroundColor(getResources().getColor(R.color.white));
+                ofinc.setBackgroundColor(getResources().getColor(R.color.white));
+                ofex.setBackgroundColor(getResources().getColor(R.color.red));
                 String towhere ="expense";
                 Intent intent=new Intent(MainActivity.this,mainlist.class);
                 intent.putExtra("location",towhere);
